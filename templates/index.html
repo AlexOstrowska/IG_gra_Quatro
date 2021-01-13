@@ -35,6 +35,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
         <p>Autor: Alexandra Ostrowska</p>
     </div>
   </div>
+    {% with msgs = get_flashed_messages(with_categories=true) %}
+    {% if msgs %}
+        {% for cat, m in msgs  %}
+            <div class="alert alert-{{ cat }}">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <!-- END MAIN -->
 </div>
 </body>

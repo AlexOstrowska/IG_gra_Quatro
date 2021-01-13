@@ -1,13 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>gra</h1>
-   <div class="navbar-nav">
-       <a href="./index">Wróc do menu</a>
-   </div>
-</body>
-</html>
+    <!-- file: ./templates/play.html -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <title>Quatro</title>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="board">
+                    {% for row in board %}
+                        {% for field in row %}
+                         <div class="field">
+                            {% if field %}{{ field }}{% endif %}
+                         </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6 forms">
+                <form method="POST" action="" id="game_form">
+                <p>{{ player }}</p>
+                    <p>twój pionek: {{ piece }}</p>
+                    <label for="piece_select">pionek dla przeciwnika</label>
+                    <select name="piece" id="piece_select">
+                        {% for piece in pieces %}
+                            <option value="{{ piece.id }}">{{ piece }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="field_select">gdzie umieścisz swój pionek</label>
+                    <br>
+                    <select name="field" id="field_select">
+                        {% for id in free_fields %}
+                            <option value="{{ id }}">{{ id }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="ok">
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>

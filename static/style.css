@@ -1,0 +1,9 @@
+#board{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 50vh;
+}
+.field{
+    border: 1px solid green;
+}
