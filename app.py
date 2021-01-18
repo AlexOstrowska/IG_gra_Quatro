@@ -36,7 +36,7 @@ def game():
         board[int(field_to_insert_id[1])][int(field_to_insert_id[0])] = global_piece
         if check_finish(board):
             flash('wygrał '+ player, 'success')
-            return redirect('/')
+            return redirect('/game')
         turn += 1
         global_piece = [p for p in pieces_list_definition if p.id == piece_id][0]
         pieces_list_definition.remove(global_piece)
