@@ -17,3 +17,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   bottom: 0;
   height: inherit;
 }
+.gra{
+    margin-top: 30px;
+    margin-left: 30 px;
+    margin-right: 20px;
+}
