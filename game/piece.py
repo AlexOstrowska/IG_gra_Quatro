@@ -1,5 +1,3 @@
-
-
 class Piece:
 
     def __init__(self, id=1, round_shape=False, big_size=False, light_color=False, top_hole=False):
@@ -13,7 +11,7 @@ class Piece:
     def __str__(self):
         return 'pionek {} {} {} {}'.format(
             'okrągły' if self.round_shape else 'kwadratowy',
-            'jasny' if self.light_color else 'ceimny',
+            'jasny' if self.light_color else 'ciemny',
             'z dziurą' if self.top_hole else 'bez dziury',
             'duży' if self.big_size else 'mały'
         )

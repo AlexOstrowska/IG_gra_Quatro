@@ -2,8 +2,9 @@ from flask import Flask, render_template, request, flash, redirect
 from game.piece import pieces_list_definition
 from game.finish import check_finish
 from random import choice
+
 app = Flask(__name__)
-app.secret_key = 'Bepiz :DDDDd'
+app.secret_key = 'kluczyk'
 
 board = [
     [None, None, None, None],
@@ -12,7 +13,7 @@ board = [
     [None, None, None, None],
 ]
 turn = 0
-global_piece =None
+global_piece = None
 player = None
 
 
@@ -34,13 +35,13 @@ def game():
         piece_id = int(request.form.get('piece'))
 
         board[int(field_to_insert_id[1])][int(field_to_insert_id[0])] = global_piece
-        if check_finish(board):
-            flash('wygrał '+ player, 'success')
-            return redirect('/game')
+
         turn += 1
         global_piece = [p for p in pieces_list_definition if p.id == piece_id][0]
         pieces_list_definition.remove(global_piece)
-
+        # if check_finish(board):
+        #    flash('wygrał '+ player, 'success')
+        #    return redirect('/')
 
     free_field = []
     for i, row in enumerate(board):
@@ -53,17 +54,25 @@ def game():
         global_piece = piece
         pieces_list_definition.remove(piece)
 
-    if turn == 0 or turn%2==0:
+    if turn == 0 or turn % 2 == 0:
         player = 'gracz 1'
     else:
         player = 'gracz 2'
 
-    return render_template('game.html', pieces=pieces_list_definition, board=board, free_fields=free_field, piece=global_piece, player=player)
+    return render_template('game.html', pieces=pieces_list_definition, board=board, free_fields=free_field,
+                           piece=global_piece, player=player)
 
 
 @app.route('/rules')
 def zasady():
     return render_template('rules.html')
+
+
+@app.route('/reset')
+def reset():
+    game()
+    return redirect('/game')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

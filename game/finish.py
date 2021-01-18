@@ -38,9 +38,6 @@ def check_finish(board):
             if res[f]:
                 return True
 
-
-
-
     r_board = list(zip(*board))[::-1]
 
     for row in r_board:
@@ -81,4 +78,3 @@ def check_finish(board):
         for f in res:
             if res[f]:
                 return True
-
