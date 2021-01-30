@@ -36,11 +36,11 @@
             <div class="col-md-6 forms">
                 <form method="POST" action="" id="game_form">
                 <p>{{ player }}</p>
-                    <p>Twój pionek: {{ piece }}</p>
+                    <p>Twój pionek: <img class="image" src="../static/{{ piece }}.png"/></p>
                     <label for="piece_select">Pionek dla przeciwnika</label>
-                    <select name="piece" id="piece_select">
+                    <select name="piece" id="piece_select" style="width: 200px;">
                         {% for piece in pieces %}
-                            <option value="{{ piece.id }}">{{ piece }}</option>
+                            <option value="{{ piece.id }}" style=background-image:url('../static/{{ piece }}.png');">{{ piece }}</option>
                         {% endfor %}
                     </select>
                     <br>

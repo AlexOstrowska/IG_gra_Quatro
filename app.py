@@ -39,7 +39,7 @@ def game():
         turn += 1
         global_piece = [p for p in pieces_list_definition if p.id == piece_id][0]
         pieces_list_definition.remove(global_piece)
-        # if check_finish(board):
+        #if check_finish(board):
         #    flash('wygrał '+ player, 'success')
         #    return redirect('/')
 

@@ -9,11 +9,29 @@ class Piece:
         self.player = None
 
     def __str__(self):
-        return 'pionek {} {} {} {}'.format(
-            'okrągły' if self.round_shape else 'kwadratowy',
-            'jasny' if self.light_color else 'ciemny',
-            'z dziurą' if self.top_hole else 'bez dziury',
-            'duży' if self.big_size else 'mały'
+        #return 'pionek {} {} {} {}'.format(
+        #    'okrągły' if self.round_shape else 'kwadratowy',
+        #    'jasny' if self.light_color else 'ciemny',
+        #    'z dziurą' if self.top_hole else 'bez dziury',
+        #    'duży' if self.big_size else 'mały'
+        #)
+        return '{}'.format(
+            'oblh' if self.round_shape and self.light_color and self.top_hole and self.big_size else
+            'obdh' if self.round_shape and self.big_size and not self.light_color and self.top_hole else
+            'obdn' if self.round_shape and self.big_size and not self.light_color and not self.top_hole else
+            'obln' if self.round_shape and self.big_size and self.light_color and not self.top_hole else
+            'osdh' if self.round_shape and not self.big_size and not self.light_color and self.top_hole else
+            'osdn' if self.round_shape and not self.big_size and not self.light_color and not self.top_hole else
+            'oslh' if self.round_shape and not self.big_size and self.light_color and self.top_hole else
+            'osln' if self.round_shape and not self.big_size and self.light_color and not self.top_hole else
+            'sbdh' if not self.round_shape and self.big_size and not self.light_color and self.top_hole else
+            'sbdn' if not self.round_shape and self.big_size and not self.light_color and not self.top_hole else
+            'sblh' if not self.round_shape and self.big_size and self.light_color and self.top_hole else
+            'sbln' if not self.round_shape and self.big_size and self.light_color and not self.top_hole else
+            'ssdh' if not self.round_shape and not self.big_size and not self.light_color and self.top_hole else
+            'ssdn' if not self.round_shape and not self.big_size and not self.light_color and not self.top_hole else
+            'sslh' if not self.round_shape and not self.big_size and self.light_color and self.top_hole else
+            'ssln'
         )
 
     def __repr__(self):
