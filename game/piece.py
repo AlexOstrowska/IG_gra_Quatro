@@ -7,15 +7,7 @@ class Piece:
         self.top_hole = top_hole
         self.id = id
         self.player = None
-
-    def __str__(self):
-        #return 'pionek {} {} {} {}'.format(
-        #    'okrągły' if self.round_shape else 'kwadratowy',
-        #    'jasny' if self.light_color else 'ciemny',
-        #    'z dziurą' if self.top_hole else 'bez dziury',
-        #    'duży' if self.big_size else 'mały'
-        #)
-        return '{}'.format(
+        self.name = '{}'.format(
             'oblh' if self.round_shape and self.light_color and self.top_hole and self.big_size else
             'obdh' if self.round_shape and self.big_size and not self.light_color and self.top_hole else
             'obdn' if self.round_shape and self.big_size and not self.light_color and not self.top_hole else
@@ -33,6 +25,9 @@ class Piece:
             'sslh' if not self.round_shape and not self.big_size and self.light_color and self.top_hole else
             'ssln'
         )
+
+    def __str__(self):
+        return self.name
 
     def __repr__(self):
         return 'piece: '+str(self.id)

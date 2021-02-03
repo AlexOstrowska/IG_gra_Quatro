@@ -8,6 +8,9 @@
 .field{
     background-color: lightgrey;
     border: 2px solid black;
+    justify-content: center;
+
+
 }
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 .w3-sidebar {
@@ -24,4 +27,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 }
 .image{
   width: 50px;
+}
+#piece_all{
+    padding-top: 50px;
+    margin-top: 10px;
 }

@@ -26,8 +26,10 @@
                 <div id="board">
                     {% for row in board %}
                         {% for field in row %}
-                         <div class="field">
-                            {% if field %}{{ field }}{% endif %}
+                         <div style="height: 100px" class="field">
+                            {% if field %}
+                                <img style="height: 100px" src="{{ url_for('static', filename=field~'.png') }}" alt="">
+                            {% endif %}
                          </div>
                         {% endfor %}
                     {% endfor %}
@@ -35,12 +37,14 @@
             </div>
             <div class="col-md-6 forms">
                 <form method="POST" action="" id="game_form">
-                <p>{{ player }}</p>
+                    <p>{{ player }}</p>
                     <p>Twój pionek: <img class="image" src="../static/{{ piece }}.png"/></p>
                     <label for="piece_select">Pionek dla przeciwnika</label>
                     <select name="piece" id="piece_select" style="width: 200px;">
                         {% for piece in pieces %}
-                            <option value="{{ piece.id }}" style=background-image:url('../static/{{ piece }}.png');">{{ piece }}</option>
+                            <option value="{{ piece.id }}" style="height:50px;background-image:url('../static/{{ piece }}.png')">
+                                {{ piece.id }}
+                            </option>
                         {% endfor %}
                     </select>
                     <br>
@@ -55,6 +59,24 @@
                 </form>
             </div>
         </div>
+    <div class="piece_all" id="piece_all">
+        <table style="width:90%">
+            <tr>
+                {% for piece in pieces %}
+                    <th>{{ piece.id }}</th>
+                 {% endfor %}
+            </tr>
+            <tr>
+                {% for piece in pieces %}
+                    <th><img style="height: 100px" src="{{ url_for('static', filename=piece~'.png') }}" alt=""></th>
+                {% endfor %}
+            </tr>
+
+        </table>
+
+
+
+    </div>
     </div>
     </body>
     </html>
